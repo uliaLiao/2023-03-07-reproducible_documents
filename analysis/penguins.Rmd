@@ -5,8 +5,8 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE,warning=FALSE}
+
 source(here::here("R/predict.R"))
 library(palmerpenguins)
 library(knitr)
@@ -19,9 +19,7 @@ head(penguins) %>% kable()
 ```
 
 
-```{r plot}
-#| echo=FALSE,
-#| message=FALSE,
+```{r plot, message=FALSE, warning=FALSE}
 #| message=FALSE,
 #| warning=FALSE,
 #| fig.alt="screen reader",
@@ -36,7 +34,7 @@ ggplot(penguins, aes(x=bill_length_mm,
 ```
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # FIXME: fix me :(
 penguins <- penguins %>%
   drop_na() %>% # TODO: clean up at the top
@@ -45,7 +43,7 @@ penguins <- penguins %>%
                                classify_penguin))
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 penguins %>%
   count(species, my_predict)
 ```

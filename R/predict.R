@@ -1,3 +1,4 @@
+library(tidyverse)
 classify_penguin <- function(bill_length, flipper_length) {
   
   stopifnot(is_numeric(bill_length) && is_numeric(flipper_length))
