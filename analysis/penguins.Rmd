@@ -2,10 +2,11 @@
 title: "Penguin Analysis"
 author: "Jiaying Liao"
 date: "`r Sys.Date()`"
-output: html_document
+output: bookdown::html_document2
 bibliography: citations.bib
 csl: apa.csl
 ---
+# Introduction
 
 ```{r setup, include=FALSE,warning=FALSE}
 
@@ -15,10 +16,11 @@ library(knitr)
 library(tidyverse)
 ```
 
-```{r}
+```{r working directory}
 print(getwd())
 ```
 
+# Methods
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 head(penguins) %>% kable()
@@ -26,12 +28,11 @@ head(penguins) %>% kable()
 
 Add citation here [@bashir2014ensemble], and here [@Einstein1905].
 
-
-```{r plot, message=FALSE, warning=FALSE}
+## Model 1
+```{r my-plot, message=FALSE, warning=FALSE,fig.cap="caption"}
 #| message=FALSE,
 #| warning=FALSE,
-#| fig.alt="screen reader",
-#| fig.cap="caption",
+#| fig.alt="screen reader"
 
 ggplot(penguins, aes(x=bill_length_mm, 
                      y=flipper_length_mm,
@@ -47,6 +48,7 @@ ggplot(penguins, aes(x=bill_length_mm,
     caption = "A penguin plot")
 ```
 
+## Model 2
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # FIXME: fix me :(
@@ -63,12 +65,13 @@ penguins %>%
   kable(col.names = c("Species", "My prediction","Number"))
 ```
 
-## Result
+# Result
 <!--
 TODO: this is an html comment
 -->
 Our data has `r nrow(penguins)` rows.
 
+Figure \@ref(fig:my-plot) has shown something interesting.
 
 # References
 
