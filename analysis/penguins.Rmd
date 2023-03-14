@@ -4,6 +4,7 @@ author: "Jiaying Liao"
 date: "`r Sys.Date()`"
 output: html_document
 bibliography: citations.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE,warning=FALSE}
@@ -14,6 +15,9 @@ library(knitr)
 library(tidyverse)
 ```
 
+```{r}
+print(getwd())
+```
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
