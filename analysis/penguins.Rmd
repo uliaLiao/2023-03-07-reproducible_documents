@@ -9,7 +9,7 @@ csl: apa.csl
 # Introduction
 
 ```{r setup, include=FALSE,warning=FALSE}
-
+knitr::opts_chunk$set(echo = FALSE)
 source(here::here("R/predict.R"))
 library(palmerpenguins)
 library(knitr)
@@ -29,23 +29,12 @@ head(penguins) %>% kable()
 Add citation here [@bashir2014ensemble], and here [@Einstein1905].
 
 ## Model 1
-```{r my-plot, message=FALSE, warning=FALSE,fig.cap="caption"}
+```{r my-plot, message=FALSE, warning=FALSE,fig.cap="This is a caption"}
 #| message=FALSE,
 #| warning=FALSE,
 #| fig.alt="screen reader"
+knitr::include_graphics(here::here("output/penguin_plot.png"))
 
-ggplot(penguins, aes(x=bill_length_mm, 
-                     y=flipper_length_mm,
-                     color=species)) +
-  geom_point() +
-  geom_hline(yintercept = 205)+
-  geom_vline(xintercept = 45) + theme(panel.grid.major = element_line(colour = "lavenderblush3"),
-    panel.grid.minor = element_line(colour = "lavenderblush2"),
-    plot.title = element_text(face = "bold"),
-    panel.background = element_rect(fill = "white"),
-    plot.background = element_rect(fill = "darkgray")) +labs(title = "Penguins", x = "bill length (mm)",
-    y = "flipper length (mm)", subtitle = "Body information",
-    caption = "A penguin plot")
 ```
 
 ## Model 2
@@ -59,7 +48,7 @@ penguins <- penguins %>%
                                classify_penguin))
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, echo=TRUE}
 penguins %>%
   count(species, my_predict) %>%
   kable(col.names = c("Species", "My prediction","Number"))
